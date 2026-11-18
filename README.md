@@ -4,9 +4,17 @@ A community showcase for projects built by members of AI Developers Lounge. Shar
 
 ## Projects
 
-- [T-Zero](projects/T-Zero/) — an open-source context compression tool for AI coding assistants. This snapshot comes from [the original repository](https://github.com/toprakahmetaydogmus/TZeroAlgorithm) at commit `8972be7b94eac8d5d7e0d5e2047603ed29191768`; see its own README and MIT license.
+- [T-Zero](projects/T-Zero/) — an open-source context compression tool for AI coding assistants. This Git submodule points to [the original repository](https://github.com/toprakahmetaydogmus/TZeroAlgorithm); see its own README and MIT license.
 
 Want to add yours? See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+To clone the showcase with its submodules, run:
+
+```bash
+git clone --recurse-submodules https://github.com/toprakahmetaydogmus/AI-Lounge-Projects.git
+```
+
+For an existing clone, run `git submodule update --init --recursive`.
 
 ## Community
 

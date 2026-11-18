@@ -1,0 +1,3 @@
+[submodule "projects/T-Zero"]
+	path = projects/T-Zero
+	url = https://github.com/toprakahmetaydogmus/TZeroAlgorithm.git
