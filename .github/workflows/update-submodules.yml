@@ -1,0 +1,36 @@
+name: Update project submodules
+
+on:
+  schedule:
+    - cron: '23 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-project-submodules
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out showcase
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+      - name: Update submodule pointers
+        shell: bash
+        run: |
+          set -euo pipefail
+          git submodule update --remote --init
+          git add -- .gitmodules projects
+          if git diff --cached --quiet; then
+            echo "Submodules are already up to date."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update project submodules"
+          git push

@@ -14,7 +14,7 @@ To clone the showcase with its submodules, run:
 git clone --recurse-submodules https://github.com/toprakahmetaydogmus/AI-Lounge-Projects.git
 ```
 
-For an existing clone, run `git submodule update --init --recursive`.
+For an existing clone, run `git submodule update --init --recursive`. Submodule pointers are checked for updates daily using GitHub Actions; pull the latest showcase commit and run the same command to update your local checkout.
 
 ## Community
 
