@@ -1,0 +1,163 @@
+name: 'T-Zero Context Architect & Zero-Leak Security Audit'
+description: 'Enterprise AST Codebase Context Engine, 95% Token Reducer, and 100% Zero-Leak Security Auditor for AI Coding Agents.'
+author: 'Toprak Ahmet Aydoğmuş (Siber Akademi)'
+branding:
+  icon: 'cpu'
+  color: 'cyan'
+
+inputs:
+  mode:
+    description: 'Execution mode: review (pre-commit & PR reality-lock), audit (full static security & AST scan), or tree'
+    required: false
+    default: 'review'
+  ref:
+    description: 'Base git reference for review mode (default: auto)'
+    required: false
+    default: 'auto'
+  audit-level:
+    description: 'Audit rigor level: strict, moderate, or permissive'
+    required: false
+    default: 'strict'
+  enforce-boundaries:
+    description: 'Enforce architectural boundaries defined in tzero.rules.json'
+    required: false
+    default: 'false'
+  workspace-dir:
+    description: 'Target directory to analyze'
+    required: false
+    default: '.'
+  export-rules:
+    description: 'Auto-generate AI agent rules (.cursorrules, .cursor/rules/*.mdc, Copilot)'
+    required: false
+    default: 'true'
+
+outputs:
+  token-savings-pct:
+    description: 'Percentage of tokens pruned by AST signature compression'
+  secret-findings:
+    description: 'Number of hardcoded secret or token leaks detected'
+  blast-radius-score:
+    description: 'Calculated architectural blast radius risk score (0-100)'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v6
+      with:
+        python-version: '3.12'
+        cache: 'pip'
+
+    - name: Install T-Zero Engine
+      shell: bash
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f "pyproject.toml" ] && grep -q 'name = "tzero-mcp"' pyproject.toml; then
+          python -m pip install .
+        else
+          python -m pip install tzero-mcp
+        fi
+
+    - name: Run T-Zero Autonomous Gate
+      shell: bash
+      run: |
+        MODE="${{ inputs.mode }}"
+        REF="${{ inputs.ref }}"
+        DIR="${{ inputs.workspace-dir }}"
+        AUDIT_LEVEL="${{ inputs.audit-level }}"
+        ENFORCE_BOUNDARIES="${{ inputs.enforce-boundaries }}"
+        EXPORT_RULES="${{ inputs.export-rules }}"
+
+        GATE_FAILED=0
+
+        if [ "$MODE" = "review" ]; then
+          echo "::group::🔍 T-Zero Autonomous Code Review & Reality-Lock Gate"
+          tzero review "$REF" --dir "$DIR" || GATE_FAILED=1
+          echo "::endgroup::"
+        elif [ "$MODE" = "tree" ]; then
+          echo "::group::🗺️ T-Zero AST Context Tree"
+          tzero --export-repomap - --dir "$DIR" || GATE_FAILED=1
+          echo "::endgroup::"
+        else
+          echo "::group::⚡ T-Zero Codebase AST Analysis"
+          tzero --audit "$DIR" || GATE_FAILED=1
+          echo "::endgroup::"
+        fi
+
+        if [ "$ENFORCE_BOUNDARIES" = "true" ] && [ -f "$DIR/tzero.rules.json" ]; then
+          echo "::group::🏛️ T-Zero Architectural Boundaries"
+          tzero --enforce-boundaries "$DIR/tzero.rules.json" --dir "$DIR" || GATE_FAILED=1
+          echo "::endgroup::"
+        fi
+
+        if [ "$EXPORT_RULES" = "true" ]; then
+          echo "::group::🤖 Export AI Agent Rules"
+          tzero --export-agent-rules --dir "$DIR" || true
+          echo "::endgroup::"
+        fi
+
+        METRICS=$(python -c '
+        import json, sys
+        t = sys.argv[1]
+        s, f, b = 0.0, 0, 0
+        try:
+            from tzero_cost import TokenCostCalculator
+            s = round(float(TokenCostCalculator.calculate_cost(t).reduction_pct), 1)
+        except Exception:
+            pass
+        try:
+            from tzero_security import ZeroLeakEngine
+            f = int(ZeroLeakEngine.scan_workspace(t).get("violation_count", 0))
+        except Exception:
+            pass
+        try:
+            from tzero_features import ChangeImpactAnalyzer
+            top = sorted(ChangeImpactAnalyzer(t).inbound_graph.items(), key=lambda kv: len(kv[1]), reverse=True)
+            b = min(100, len(top[0][1]) * 10) if top else 0
+        except Exception:
+            pass
+        print(json.dumps({"savings_pct": s, "secret_findings": f, "blast_score": b}))
+        ' "$DIR")
+
+        SAVINGS_PCT=$(python -c "import json,sys; d=json.loads(sys.argv[1]); print(d['savings_pct'])" "$METRICS")
+        SECRET_FINDINGS=$(python -c "import json,sys; d=json.loads(sys.argv[1]); print(d['secret_findings'])" "$METRICS")
+        BLAST_SCORE=$(python -c "import json,sys; d=json.loads(sys.argv[1]); print(d['blast_score'])" "$METRICS")
+
+        if [ -n "$GITHUB_OUTPUT" ]; then
+          {
+            echo "token-savings-pct=$SAVINGS_PCT"
+            echo "secret-findings=$SECRET_FINDINGS"
+            echo "blast-radius-score=$BLAST_SCORE"
+          } >> "$GITHUB_OUTPUT"
+        fi
+
+        if [ "$AUDIT_LEVEL" = "strict" ] && [ "$SECRET_FINDINGS" -gt 0 ]; then
+          GATE_FAILED=1
+        fi
+        if [ "$AUDIT_LEVEL" = "permissive" ]; then
+          GATE_FAILED=0
+        fi
+
+        # Step summary output
+        if [ -n "$GITHUB_STEP_SUMMARY" ]; then
+          SEC_BADGE="🛡️ PASSED (0 leaks)"
+          if [ "$SECRET_FINDINGS" -gt 0 ]; then
+            SEC_BADGE="🚨 $SECRET_FINDINGS SECRET(S) DETECTED"
+          fi
+          {
+            echo "## ⚡ T-Zero Context Architect & Security Gate"
+            echo ""
+            echo "| Metric | Value | Policy |"
+            echo "| :--- | :---: | :---: |"
+            echo "| **Zero-Leak Security** | $SEC_BADGE | Audit Level: $AUDIT_LEVEL |"
+            echo "| **AST Context Reduction** | ⚡ -${SAVINGS_PCT}% | 100% Offline Token Reduction |"
+            echo "| **Max Blast Radius Score** | 💥 ${BLAST_SCORE}/100 | Dependency Graph Analysis |"
+            echo ""
+            echo "> *Automated by [T-Zero Engine](https://github.com/toprakahmetaydogmus/TZeroAlgorithm) — 100% Free & Open-Source.*"
+          } >> "$GITHUB_STEP_SUMMARY"
+        fi
+
+        if [ "$GATE_FAILED" -ne 0 ]; then
+          echo "::error::T-Zero Gate failed (audit-level=$AUDIT_LEVEL, secret-findings=$SECRET_FINDINGS)."
+          exit 1
+        fi

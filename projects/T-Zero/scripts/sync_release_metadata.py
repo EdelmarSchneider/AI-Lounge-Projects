@@ -1,0 +1,273 @@
+# -*- coding: utf-8 -*-
+"""Single-source release metadata and package synchronizer for T-Zero."""
+
+import argparse
+import json
+import pathlib
+import re
+import shutil
+import tomllib
+from typing import Dict, List
+
+ROOT_DIR = pathlib.Path(__file__).resolve().parent.parent
+
+
+def _update_json_version(path: pathlib.Path, version: str, keys: List[str], check_only: bool) -> bool:
+    data = json.loads(path.read_text(encoding="utf-8"))
+    changed = False
+    for key in keys:
+        if key == "packages[0].version":
+            if data["packages"][0]["version"] != version:
+                data["packages"][0]["version"] = version
+                changed = True
+        elif data.get(key) != version:
+            data[key] = version
+            changed = True
+    if changed and not check_only:
+        path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return changed
+
+
+def _regex_replace(path: pathlib.Path, pattern: str, repl: str, check_only: bool) -> bool:
+    text = path.read_text(encoding="utf-8")
+    new_text, count = re.subn(pattern, repl, text)
+    changed = count > 0 and new_text != text
+    if changed and not check_only:
+        path.write_text(new_text, encoding="utf-8")
+    return changed
+
+
+def sync_release_metadata(target_version: str, check_only: bool = False) -> Dict[str, bool]:
+    """Synchronizes release versions across Python, MCP, npm, Brew, and VS Code manifests."""
+    results: Dict[str, bool] = {}
+
+    results["pyproject.toml"] = _regex_replace(
+        ROOT_DIR / "pyproject.toml",
+        r'(?m)^(version\s*=\s*)"[^"]+"',
+        rf'\1"{target_version}"',
+        check_only,
+    )
+    results["setup.py"] = _regex_replace(
+        ROOT_DIR / "setup.py",
+        r'(?m)^(VERSION\s*=\s*)"[^"]+"',
+        rf'\1"{target_version}"',
+        check_only,
+    )
+    results["server.json"] = _update_json_version(
+        ROOT_DIR / "server.json", target_version, ["version", "packages[0].version"], check_only
+    )
+    results["smithery.json"] = _update_json_version(
+        ROOT_DIR / "smithery.json", target_version, ["version"], check_only
+    )
+    results["glama.json"] = _update_json_version(
+        ROOT_DIR / "glama.json", target_version, ["version"], check_only
+    )
+    results["installers/npm/package.json"] = _update_json_version(
+        ROOT_DIR / "installers" / "npm" / "package.json", target_version, ["version"], check_only
+    )
+    results["extensions/vscode/package.json"] = _update_json_version(
+        ROOT_DIR / "extensions" / "vscode" / "package.json", target_version, ["version"], check_only
+    )
+    results["installers/scoop/tzero.json"] = _update_json_version(
+        ROOT_DIR / "installers" / "scoop" / "tzero.json", target_version, ["version"], check_only
+    )
+
+    winget_base = ROOT_DIR / "installers" / "winget" / "manifests" / "s" / "SiberAkademi" / "TZero"
+    winget_ver_dir = winget_base / target_version
+    winget_drifted = False
+
+    if not winget_ver_dir.is_dir():
+        winget_drifted = True
+        if not check_only:
+            winget_ver_dir.mkdir(parents=True, exist_ok=True)
+            existing_dirs = sorted([d for d in winget_base.iterdir() if d.is_dir() and d.name != target_version])
+            src_dir = existing_dirs[-1] if existing_dirs else None
+            if src_dir:
+                for src_file in src_dir.glob("SiberAkademi.TZero.*"):
+                    shutil.copy2(src_file, winget_ver_dir / src_file.name)
+
+    if winget_ver_dir.is_dir():
+        for suffix in ("yaml", "installer.yaml", "locale.en-US.yaml"):
+            mf = winget_ver_dir / f"SiberAkademi.TZero.{suffix}"
+            if not mf.is_file():
+                winget_drifted = True
+                continue
+            c_ver = _regex_replace(mf, r'(?m)^(PackageVersion:\s*).+$', rf'\g<1>{target_version}', check_only)
+            c_url = _regex_replace(
+                mf,
+                r'(?m)^(    InstallerUrl:\s*https://github\.com/[^/]+/[^/]+/releases/download/v)[^/]+/(TZero-v)[^/]+(-Windows-x64\.zip)$',
+                rf'\g<1>{target_version}/\g<2>{target_version}\g<3>',
+                check_only,
+            )
+            if c_ver or c_url:
+                winget_drifted = True
+
+    results["installers/winget"] = winget_drifted
+
+    for rel in ("Formula/tzero.rb", "installers/brew/tzero.rb"):
+        p = ROOT_DIR / rel
+        c1 = _regex_replace(
+            p, r'(refs/tags/(?:v|release-))[0-9]+\.[0-9]+\.[0-9]+\.tar\.gz',
+            rf'\g<1>{target_version}.tar.gz', check_only,
+        )
+        c2 = _regex_replace(p, r'(?m)^(\s*version\s+)"[^"]+"', rf'\1"{target_version}"', check_only)
+        results[rel] = c1 or c2
+
+    results["tzero_mcp.py"] = _regex_replace(
+        ROOT_DIR / "tzero" / "tzero_mcp.py",
+        r'(?m)^(SERVER_VERSION\s*=\s*)"[^"]+"',
+        rf'\1"{target_version}"',
+        check_only,
+    )
+    results["tzero_welcome.py"] = _regex_replace(
+        ROOT_DIR / "tzero" / "tzero_welcome.py",
+        r'(?m)^(VERSION\s*=\s*)"[^"]+"',
+        rf'\1"{target_version}"',
+        check_only,
+    )
+
+    addmcp_p = ROOT_DIR / "addmcp.py"
+    c_app = _regex_replace(addmcp_p, r'(?m)^(APP_VERSION\s*=\s*)"[^"]+"', rf'\1"{target_version}"', check_only)
+    c_ban = _regex_replace(addmcp_p, r'1-CLICK MCP INITIALIZATION \(v[0-9]+\.[0-9]+\.[0-9]+\)', f"1-CLICK MCP INITIALIZATION (v{target_version})", check_only)
+    results["addmcp.py"] = c_app or c_ban
+
+    tb_p = ROOT_DIR / "tzero" / "tzero_task_benchmark.py"
+    c_tb1 = _regex_replace(tb_p, r'(?m)^(\s*version:\s*str\s*=\s*)"[^"]+"', rf'\1"{target_version}"', check_only)
+    c_tb2 = _regex_replace(tb_p, r'BENCHMARK REPORT \(v[0-9]+\.[0-9]+\.[0-9]+\)', f"BENCHMARK REPORT (v{target_version})", check_only)
+    results["tzero_task_benchmark.py"] = c_tb1 or c_tb2
+
+    v3_p = ROOT_DIR / "tzero" / "tzero_v3.py"
+    c_v1 = _regex_replace(v3_p, r'(T-Zero (?:Developer Console & Context Architect|Geliştirici Konsolu & Bağlam Mimarı) )v[0-9]+\.[0-9]+\.[0-9]+', rf'\1v{target_version}', check_only)
+    c_v2 = _regex_replace(v3_p, r'(parser\.add_argument\("--changelog"[^\n]*const=)"v[^"]+"', rf'\1"v{target_version}"', check_only)
+    c_v3 = _regex_replace(v3_p, r'(Context Architect )v[0-9]+\.[0-9]+\.[0-9]+( Master Edition)', rf'\1v{target_version}\2', check_only)
+    c_v4 = _regex_replace(v3_p, r'(CONTEXT ARCHITECT & MCP )v[0-9]+\.[0-9]+\.[0-9]+( MASTER)', rf'\1v{target_version}\2', check_only)
+    c_v5 = _regex_replace(v3_p, r'(GRADIO COCKPIT \()v[0-9]+\.[0-9]+\.[0-9]+(\))', rf'\1v{target_version}\2', check_only)
+    results["tzero_v3.py"] = any((c_v1, c_v2, c_v3, c_v4, c_v5))
+
+    tui_p = ROOT_DIR / "tzero" / "tzero_tui.py"
+    c_t1 = _regex_replace(tui_p, r'(LIVE COCKPIT )v[0-9]+\.[0-9]+\.[0-9]+', rf'\1v{target_version}', check_only)
+    c_t2 = _regex_replace(tui_p, r'(generate_changelog_entry\(version=)"v[0-9]+\.[0-9]+\.[0-9]+"', rf'\1"v{target_version}"', check_only)
+    results["tzero_tui.py"] = c_t1 or c_t2
+
+    # Internal sub-engines and tools
+    contracts_p = ROOT_DIR / "tzero" / "tzero_contracts.py"
+    c_ct1 = _regex_replace(contracts_p, r'Context Architect v[0-9]+\.[0-9]+\.[0-9]+ Master Edition', f"Context Architect v{target_version} Master Edition", check_only)
+    c_ct2 = _regex_replace(contracts_p, r'("name":\s*"T-Zero Contract Guardian",\s*\n\s*"version":\s*)"[0-9]+\.[0-9]+\.[0-9]+"', rf'\1"{target_version}"', check_only)
+    results["tzero_contracts.py"] = c_ct1 or c_ct2
+
+    dash_p = ROOT_DIR / "tzero" / "tzero_dashboard.py"
+    c_d1 = _regex_replace(dash_p, r'Context Architect &bull; v[0-9]+\.[0-9]+\.[0-9]+', f"Context Architect &bull; v{target_version}", check_only)
+    c_d2 = _regex_replace(dash_p, r'Context Architect v[0-9]+\.[0-9]+\.[0-9]+', f"Context Architect v{target_version}", check_only)
+    c_d3 = _regex_replace(dash_p, r'(?m)^(\s*version\s*=\s*)"[0-9]+\.[0-9]+\.[0-9]+"', rf'\1"{target_version}"', check_only)
+    results["tzero_dashboard.py"] = any((c_d1, c_d2, c_d3))
+
+    golden_p = ROOT_DIR / "tzero" / "tzero_golden.py"
+    c_g1 = _regex_replace(golden_p, r'Context Architect v[0-9]+\.[0-9]+\.[0-9]+ Master Edition', f"Context Architect v{target_version} Master Edition", check_only)
+    c_g2 = _regex_replace(golden_p, r'(?m)^(\s*version\s*=\s*)"[0-9]+\.[0-9]+\.[0-9]+"', rf'\1"{target_version}"', check_only)
+    results["tzero_golden.py"] = c_g1 or c_g2
+
+    lsp_p = ROOT_DIR / "tzero" / "tzero_lsp.py"
+    results["tzero_lsp.py"] = _regex_replace(lsp_p, r'("serverInfo":\s*\{"name":\s*"tzero-lsp",\s*"version":\s*)"[0-9]+\.[0-9]+\.[0-9]+"', rf'\1"{target_version}"', check_only)
+
+    for doc_mod in ("tzero_budget.py", "tzero_debt.py"):
+        p = ROOT_DIR / "tzero" / doc_mod
+        results[doc_mod] = _regex_replace(p, r'Context Architect v[0-9]+\.[0-9]+\.[0-9]+ Master Edition', f"Context Architect v{target_version} Master Edition", check_only)
+
+    vs_js = ROOT_DIR / "extensions" / "vscode" / "src" / "extension.js"
+    if vs_js.is_file():
+        results["extensions/vscode/src/extension.js"] = _regex_replace(vs_js, r'Command Center \(v[0-9]+\.[0-9]+\.[0-9]+\)', f"Command Center (v{target_version})", check_only)
+
+    vs_test = ROOT_DIR / "extensions" / "vscode" / "test" / "extension.test.js"
+    if vs_test.is_file():
+        results["extensions/vscode/test/extension.test.js"] = _regex_replace(vs_test, r"assert\.equal\(pkg\.version,\s*'[^']+'\);", f"assert.equal(pkg.version, '{target_version}');", check_only)
+
+    # Automated test suites with version assertions
+    t_sync = ROOT_DIR / "tests" / "test_packaging_sync.py"
+    results["tests/test_packaging_sync.py"] = _regex_replace(t_sync, r'self\.assertEqual\(canonical,\s*"[^"]+"\)', f'self.assertEqual(canonical, "{target_version}")', check_only)
+
+    t_gold = ROOT_DIR / "tests" / "test_golden.py"
+    results["tests/test_golden.py"] = _regex_replace(t_gold, r'self\.assertEqual\(data\["version"\],\s*"[^"]+"\)', f'self.assertEqual(data["version"], "{target_version}")', check_only)
+
+    t_e2e = ROOT_DIR / "tests" / "test_e2e_full.py"
+    results["tests/test_e2e_full.py"] = _regex_replace(t_e2e, r'self\.assertEqual\(data\["version"\],\s*"[^"]+"\)', f'self.assertEqual(data["version"], "{target_version}")', check_only)
+
+    t_dash = ROOT_DIR / "tests" / "test_dashboard.py"
+    c_td1 = _regex_replace(t_dash, r'self\.assertIn\("[0-9]+\.[0-9]+\.[0-9]+",\s*body\)', f'self.assertIn("{target_version}", body)', check_only)
+    c_td2 = _regex_replace(t_dash, r'self\.assertEqual\(data\["version"\],\s*"[^"]+"\)', f'self.assertEqual(data["version"], "{target_version}")', check_only)
+    results["tests/test_dashboard.py"] = c_td1 or c_td2
+
+    t_ct = ROOT_DIR / "tests" / "test_contracts.py"
+    results["tests/test_contracts.py"] = _regex_replace(t_ct, r'self\.assertEqual\(driver\["version"\],\s*"[^"]+"\)', f'self.assertEqual(driver["version"], "{target_version}")', check_only)
+
+    # Documentation & README release links and badges
+    readme_p = ROOT_DIR / "README.md"
+    c_rm1 = _regex_replace(readme_p, r'VS%20Code%20Marketplace-v[0-9]+\.[0-9]+\.[0-9]+', f"VS%20Code%20Marketplace-v{target_version}", check_only)
+    c_rm2 = _regex_replace(readme_p, r'Smithery%20MCP-Compatible%20v[0-9]+\.[0-9]+\.[0-9]+', f"Smithery%20MCP-Compatible%20v{target_version}", check_only)
+    c_rm3 = _regex_replace(readme_p, r'download/v[0-9]+\.[0-9]+\.[0-9]+/TZero-v[0-9]+\.[0-9]+\.[0-9]+-Windows-x64\.zip', f"download/v{target_version}/TZero-v{target_version}-Windows-x64.zip", check_only)
+    c_rm4 = _regex_replace(readme_p, r'dist/tzero-vscode-[0-9]+\.[0-9]+\.[0-9]+\.vsix', f"dist/tzero-vscode-{target_version}.vsix", check_only)
+    results["README.md"] = any((c_rm1, c_rm2, c_rm3, c_rm4))
+
+    tr_readme_p = ROOT_DIR / "docs" / "README.tr.md"
+    if tr_readme_p.is_file():
+        c_tr1 = _regex_replace(tr_readme_p, r'VS%20Code-v[0-9]+\.[0-9]+\.[0-9]+', f"VS%20Code-v{target_version}", check_only)
+        c_tr2 = _regex_replace(tr_readme_p, r'dist/tzero-vscode-[0-9]+\.[0-9]+\.[0-9]+\.vsix', f"dist/tzero-vscode-{target_version}.vsix", check_only)
+        results["docs/README.tr.md"] = c_tr1 or c_tr2
+
+    return results
+
+
+def sync_npm_sources() -> int:
+    """Synchronizes non-private Python modules and packages into installers/npm/src/."""
+    npm_src = ROOT_DIR / "installers" / "npm" / "src"
+    npm_src.mkdir(parents=True, exist_ok=True)
+    pyproject = tomllib.loads((ROOT_DIR / "pyproject.toml").read_text(encoding="utf-8"))
+    config = pyproject["tool"]["setuptools"]
+    paths = {pathlib.Path(f"{name}.py") for name in config["py-modules"]}
+    paths.add(pathlib.Path("tzero.py"))
+    for package in config["packages"]:
+        package_dir = ROOT_DIR.joinpath(*package.split("."))
+        paths.update(path.relative_to(ROOT_DIR) for path in package_dir.glob("*.py"))
+    paths.add(pathlib.Path("tzero/tzero_graph_hud.html"))
+    paths.add(pathlib.Path("tzero/siber_akademi.ico"))
+
+    for existing in npm_src.rglob("*"):
+        if existing.is_file() and existing.suffix in {".py", ".html", ".ico"}:
+            if existing.relative_to(npm_src) not in paths:
+                existing.unlink()
+
+    for relative_path in sorted(paths):
+        target = npm_src / relative_path
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(ROOT_DIR / relative_path, target)
+    return len(paths)
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Synchronize T-Zero release metadata.")
+    metadata = tomllib.loads((ROOT_DIR / "pyproject.toml").read_text(encoding="utf-8"))
+    parser.add_argument("--version", default=metadata["project"]["version"], help="Canonical target version")
+    parser.add_argument("--check", action="store_true", help="Exit non-zero if any manifest drifts")
+    parser.add_argument("--sync-npm", action="store_true", help="Copy Python package files into installers/npm/src/")
+    args = parser.parse_args()
+
+    if args.sync_npm:
+        count = sync_npm_sources()
+        print(f"[SYNC-NPM] Synchronized {count} Python files into installers/npm/src/")
+        if args.check:
+            return 0
+
+    res = sync_release_metadata(args.version, check_only=args.check)
+    drifted = [k for k, v in res.items() if v]
+    if args.check:
+        if drifted:
+            print(f"[DRIFT] Out-of-sync manifests: {', '.join(drifted)}")
+            return 1
+        print(f"[OK] All manifests match {args.version}")
+        return 0
+
+    print(f"[SYNC] Updated {len(drifted)} manifest(s) to {args.version}: {', '.join(drifted) if drifted else 'none'}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

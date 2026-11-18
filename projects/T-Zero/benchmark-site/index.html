@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>T-Zero v11.11.0 — Enterprise AST Context Architect &amp; MCP Server | TDQS 5.0/5.0 Grade A | Up to 95% Token Reduction</title>
+  <meta name="description" content="T-Zero v11.11.0 Sovereign Release: Enterprise-grade codebase context architect and canonical MCP server. TDQS 5.0/5.0 Grade A certified, cutting LLM token usage by up to 95% with zero regressions.">
+  <meta name="keywords" content="T-Zero, AST, token reduction, MCP, Model Context Protocol, AI coding, Superdesign, LLM optimization, codebase context, Cursor, Claude Code, Windsurf, Cline">
+  <meta name="author" content="Toprak Ahmet Aydoğmuş">
+  
+  <!-- OpenGraph Meta -->
+  <meta property="og:title" content="T-Zero v11.11.0 — Enterprise AST Context Architect &amp; MCP Server | Up to 95% Token Reduction">
+  <meta property="og:description" content="Cut LLM context ingestion by up to 95%. Canonical MCP tools. 100% Zero-Leak security.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tzero-indol.vercel.app">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="T-Zero v11.11.0 — Deterministic AST Context Compressor &amp; MCP Server (TDQS 5.0/5.0 Grade A)">
+  <meta name="twitter:description" content="Cut LLM context ingestion by up to 95%. Canonical MCP tools. Zero-Leak security.">
+  
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=11.11.0">
+</head>
+<body>
+  <!-- Ambient Background & Cyber Grid -->
+  <canvas id="hero-canvas"></canvas>
+  <div class="bg-glow glow-1"></div>
+  <div class="bg-glow glow-2"></div>
+  <div class="bg-glow glow-3"></div>
+  <div class="cyber-grid"></div>
+  <div class="scanline"></div>
+
+  <!-- Navigation -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="brand">
+        <div class="brand-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">T-ZERO</span>
+          <span class="brand-sub">AST CONTEXT ARCHITECT</span>
+        </div>
+      </a>
+      <nav class="nav-links" id="nav-links">
+        <a href="#stats" class="nav-link active" data-section="stats">Benchmarks</a>
+        <a href="#sandbox" class="nav-link" data-section="sandbox">⚡ Live Sandbox</a>
+        <a href="#causal-hud" class="nav-link" data-section="causal-hud">4D Swarm HUD</a>
+        <a href="#neural-cortex" class="nav-link" data-section="neural-cortex">🧠 Neural Cortex (105 Matrix)</a>
+        <a href="#files-section" class="nav-link" data-section="files-section">Module Breakdown</a>
+        <a href="#tools" class="nav-link" data-section="tools">MCP Tools (TDQS 5/5)</a>
+        <a href="#agent-setup" class="nav-link" data-section="agent-setup">Agent Setup</a>
+        <a href="#calculator" class="nav-link" data-section="calculator">Calculator</a>
+        <a href="#downloads" class="nav-link" data-section="downloads">Downloads</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="https://pypi.org/project/tzero-mcp/" target="_blank" rel="noopener" class="btn btn-outline-sm">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+          PyPI v11.11.0
+        </a>
+        <a href="https://github.com/toprakahmetaydogmus/TZeroAlgorithm" target="_blank" rel="noopener" class="btn btn-primary-sm btn-star-action" title="Star T-Zero on GitHub">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          Star <span id="nav-star-count" class="star-counter-pill">★ 16</span>
+        </a>
+      </div>
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="hero">
+    <div class="hero-content">
+      <div class="hero-badge animate-in">
+        <span class="live-dot"></span>
+        <span>T-ZERO v11.11.0 — TDQS 5.0/5.0 GRADE A SOVEREIGN RELEASE</span>
+      </div>
+      <h1 class="hero-title animate-in delay-1">
+        Cut Your LLM Token Usage<br>
+        <span class="gradient-text">by Up to 95%</span>
+      </h1>
+      <p class="hero-desc animate-in delay-2">
+        Enterprise-grade AST context architect for <strong>Cursor, Claude Desktop, Antigravity IDE, Windsurf &amp; Cline</strong>. Prunes routine implementation bodies while preserving every typed signature, class hierarchy, and dependency link across <strong>10+ programming languages</strong>.
+      </p>
+      <div class="hero-actions animate-in delay-3">
+        <a href="#sandbox" class="btn btn-hero-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Try Live Sandbox
+        </a>
+        <a href="#downloads" class="btn btn-outline-hero">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Windows .EXE
+        </a>
+        <div class="hero-install-cmd">
+          <code>$ pip install tzero-mcp</code>
+          <button class="hero-copy-btn" id="hero-copy-btn" aria-label="Copy install command">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Viral 100-Stars Road & Social Share Hub -->
+      <div class="viral-campaign-bar animate-in delay-4">
+        <div class="viral-left">
+          <span class="viral-label">⭐ ROAD TO 100 STARS:</span>
+          <div class="viral-track">
+            <div class="viral-progress" id="viral-progress-bar" style="width: 16%;"></div>
+          </div>
+          <span class="viral-count"><strong id="hero-star-count">16</strong> / 100 Stars</span>
+        </div>
+        <div class="viral-shares">
+          <span class="share-hint">1-Click Community Share:</span>
+          <button class="share-btn btn-x" id="share-x" title="Share on X / Twitter">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            Tweet
+          </button>
+          <button class="share-btn btn-reddit" id="share-reddit" title="Share on Reddit">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2zm5.01 12.5a3.5 3.5 0 0 1-5.02 0 .5.5 0 1 1 .71-.7 2.5 2.5 0 0 0 3.6 0 .5.5 0 0 1 .71.7zm-6.26-2.75a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm4.5 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/></svg>
+            Reddit
+          </button>
+          <button class="share-btn btn-linkedin" id="share-linkedin" title="Share on LinkedIn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.4 1.4 0 1 0 0-2.8 1.4 1.4 0 0 0 0 2.8m1.39 9.74V9.92H5.07v8.58h2.78z"/></svg>
+            LinkedIn
+          </button>
+          <button class="share-btn btn-hn" id="share-hn" title="Submit to Hacker News">
+            <span style="font-weight:900; font-family: monospace;">Y</span>
+            HN
+          </button>
+          <button class="share-btn btn-copy-link" id="share-copy-link" title="Copy Share Link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            Copy
+          </button>
+        </div>
+      </div>
+
+      <!-- Floating Stats -->
+      <div class="hero-floating-stats animate-in delay-4">
+        <div class="floating-stat">
+          <span class="fs-number" data-count="52">52</span>
+          <span class="fs-label">MCP Tools</span>
+        </div>
+        <div class="floating-stat-divider"></div>
+        <div class="floating-stat">
+          <span class="fs-number" data-count="95">95</span>
+          <span class="fs-suffix">%</span>
+          <span class="fs-label">Token Savings</span>
+        </div>
+        <div class="floating-stat-divider"></div>
+        <div class="floating-stat">
+          <span class="fs-number">385+</span>
+          <span class="fs-label">Tests Passed (100%)</span>
+        </div>
+        <div class="floating-stat-divider"></div>
+        <div class="floating-stat">
+          <span class="fs-number" data-count="100">100</span>
+          <span class="fs-suffix">%</span>
+          <span class="fs-label">Zero-Leak Keyring</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Real Metrics Section -->
+  <section class="section" id="stats">
+    <div class="section-header animate-on-scroll">
+      <div class="section-label">VERIFIED BENCHMARKS</div>
+      <h2 class="section-title">Real Data, Real Results</h2>
+      <p class="section-subtitle">Every metric below was computed by T-Zero's AST engine on real source code. No synthetic data, 100% reproducible.</p>
+    </div>
+
+    <div class="metrics-grid animate-on-scroll">
+      <div class="metric-card">
+        <div class="metric-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-rose)" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <div class="metric-header">
+          <span class="metric-label">RAW REPOSITORY CONTEXT</span>
+          <span class="badge badge-danger">Unoptimized</span>
+        </div>
+        <div class="metric-val" id="total-raw">102,265</div>
+        <div class="metric-sub">Full source code with implementation bodies &amp; loops</div>
+        <div class="metric-bar">
+          <div class="metric-bar-fill metric-bar-red" style="width: 100%"></div>
+        </div>
+      </div>
+
+      <div class="metric-card highlight-card">
+        <div class="metric-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <div class="metric-header">
+          <span class="metric-label">AFTER T-ZERO ULTRA AST</span>
+          <span class="badge badge-success">Pruned Signatures</span>
+        </div>
+        <div class="metric-val cyan-glow" id="total-ultra">5,274</div>
+        <div class="metric-sub">Complete class, method &amp; type interfaces preserved</div>
+        <div class="metric-bar">
+          <div class="metric-bar-fill metric-bar-cyan" style="width: 5.16%"></div>
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-emerald)" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <div class="metric-header">
+          <span class="metric-label">AVERAGE TOKEN REDUCTION</span>
+          <span class="badge badge-accent">Net Savings</span>
+        </div>
+        <div class="metric-val green-glow" id="total-pct">-94.84%</div>
+        <div class="metric-sub">Function bodies, comments &amp; dead loops stripped</div>
+        <div class="metric-bar">
+          <div class="metric-bar-fill metric-bar-green" style="width: 94.84%"></div>
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="metric-header">
+          <span class="metric-label">PROMPT INGESTION SPEED</span>
+          <span class="badge badge-purple">LLM TTFT</span>
+        </div>
+        <div class="metric-val" id="speedup">16.5x</div>
+        <div class="metric-sub">Time-To-First-Token acceleration in coding agents</div>
+        <div class="metric-bar">
+          <div class="metric-bar-fill metric-bar-purple" style="width: 82%"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- NEW: LIVE POLYGLOT REDUCTION SANDBOX -->
+  <!-- ========================================================================= -->
+  <section class="section" id="sandbox">
+    <div class="section-header animate-on-scroll">
+      <div class="section-label">INTERACTIVE SANDBOX</div>
+      <h2 class="section-title">⚡ Live Polyglot AST Reduction Playground</h2>
+      <p class="section-subtitle">Type or paste any code below, or pick a language preset. Watch T-Zero prune function bodies in real-time with zero latency right in your browser!</p>
+    </div>
+
+    <div class="sandbox-container animate-on-scroll">
+      <!-- Preset Language Buttons -->
+      <div class="sandbox-presets">
+        <span class="preset-label">Language Presets:</span>
+        <button class="preset-btn active" data-lang="python">Python (FastAPI / Class)</button>
+        <button class="preset-btn" data-lang="typescript">TypeScript (API Controller)</button>
+        <button class="preset-btn" data-lang="rust">Rust (Tokio Async Handler)</button>
+        <button class="preset-btn" data-lang="go">Go (Microservice Runner)</button>
+        <button class="preset-btn" data-lang="solidity">Solidity (ERC-20 Token)</button>
+        <button class="preset-btn" data-lang="cpp">C++ (Hardware Driver)</button>
+        <button class="preset-btn" data-lang="swift">Swift (Observable Model)</button>
+        <button class="preset-btn" data-lang="kotlin">Kotlin (Coroutine Repo)</button>
+        <button class="preset-btn" data-lang="dart">Dart (Flutter Widget)</button>
+        <button class="preset-btn" data-lang="ruby">Ruby (Billing Service)</button>
+        <button class="preset-btn" data-lang="elixir">Elixir (GenServer Actor)</button>
+      </div>
+
+      <!-- Live Dual-Pane Editor -->
+      <div class="sandbox-editor-grid">
+        <!-- Input Pane -->
+        <div class="sandbox-pane">
+          <div class="sandbox-pane-header">
+            <div class="pane-title">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+              <span>Raw Source Code (Input)</span>
+            </div>
+            <span class="pane-badge" id="sandbox-raw-stats">0 chars | ~0 tokens</span>
+          </div>
+          <textarea id="sandbox-input" spellcheck="false" placeholder="Paste your code here..."></textarea>
+        </div>
+
+        <!-- Output Pane -->
+        <div class="sandbox-pane">
+          <div class="sandbox-pane-header">
+            <div class="pane-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              <span>T-Zero Ultra AST Output</span>
+            </div>
+            <div class="pane-actions">
+              <span class="pane-badge badge-success" id="sandbox-savings-badge">Saved: 0%</span>
+              <button class="copy-btn-sm" id="sandbox-copy-btn">Copy Output</button>
+            </div>
+          </div>
+          <pre class="sandbox-output"><code id="sandbox-output-code">// Pruned code will appear here...</code></pre>
+        </div>
+      </div>
+
+      <!-- Live Sandbox Stats Strip -->
+      <div class="sandbox-live-strip">
+        <div class="strip-item">
+          <span>Input Volume:</span>
+          <strong id="strip-raw-tokens" class="red-text">0 tokens</strong>
+        </div>
+        <div class="strip-arrow">→</div>
+        <div class="strip-item">
+          <span>Pruned Context:</span>
+          <strong id="strip-ultra-tokens" class="cyan-text">0 tokens</strong>
+        </div>
+        <div class="strip-divider"></div>
+        <div class="strip-item">
+          <span>Net Token Cost Savings:</span>
+          <strong id="strip-savings-pct" class="green-text">0.0%</strong>
+        </div>
+        <div class="strip-divider"></div>
+        <div class="strip-item">
+          <span>Client-Side Latency:</span>
+          <strong class="purple-text">&lt; 1 ms (Offline)</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- NEW: INTERACTIVE 4D CAUSAL-TEMPORAL GRAPH & PBFT SWARM HUD -->
+  <!-- ========================================================================= -->
+  <section class="section" id="causal-hud">
+    <div class="section-header animate-on-scroll">
+      <div class="section-label">JARVIS 4D CONTROL CENTER</div>
+      <h2 class="section-title">4D Causal-Temporal Graph &amp; PBFT Swarm Radar</h2>
+      <p class="section-subtitle">Real-time simulation of T-Zero's Byzantine Fault Tolerant multi-agent voting and hippocampal causal deduction</p>
+    </div>
+
+    <div class="causal-hud-card animate-on-scroll">
+      <div class="hud-top-bar">
+        <div class="hud-status">
+          <span class="live-dot green-dot"></span>
+          <span>BFT QUORUM: <strong>5/5 NODES ACTIVE</strong> (FAULT TOLERANCE: f &lt; 2)</span>
+        </div>
+        <div class="hud-actions">
+          <button class="hud-btn" id="hud-simulate-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Trigger PBFT Vote
+          </button>
+          <button class="hud-btn" id="hud-trace-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Trace Causal Link
+          </button>
+        </div>
+      </div>
+
+      <div class="hud-canvas-wrap">
+        <canvas id="causal-canvas" width="1000" height="420"></canvas>
+        <div class="hud-node-info" id="hud-node-info">
+          <div class="node-info-title" id="node-info-title">Hover over any node</div>
+          <div class="node-info-sub" id="node-info-sub">Interactive 4D Causal Network Explorer</div>
+          <div class="node-info-tags" id="node-info-tags"></div>
+        </div>
+      </div>
+
+      <div class="hud-bottom-telemetry">
+        <div class="telemetry-item">
+          <span>Consensus Round:</span>
+          <strong id="hud-round-val">#8421-ALPHA</strong>
+        </div>
+        <div class="telemetry-item">
+          <span>Latency:</span>
+          <strong class="green-text">&lt; 0.84 ms</strong>
+        </div>
+        <div class="telemetry-item">
+          <span>Veto Mechanism:</span>
+          <strong class="cyan-text">ACTIVE (Zero-Hallucination)</strong>
+        </div>
+        <div class="telemetry-item">
+          <span>Memory State:</span>
+          <strong class="purple-text">Hippocampus Consolidated</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 🧠 T-ZERO NEURAL CORTEX & AGENT-OS (105 CAPABILITY MATRIX) -->
+  <!-- ========================================================================= -->
+  <section class="section" id="neural-cortex">
+    <div class="section-header animate-on-scroll">
+      <div class="section-label">AGENT-OS ARCHITECTURE</div>
+      <h2 class="section-title">🧠 T-Zero Neural Cortex &amp; 105 Enterprise AI Matrix</h2>
+      <p class="section-subtitle">A living neural AI operating system: 105 capabilities across 7 grand pillars, 12 fleet subagents, and real-time pre-flight verification</p>
+    </div>
+
+    <!-- Interactive Pillar & Studio Tabs -->
+    <div class="cortex-tabs-wrapper animate-on-scroll">
+      <div class="cortex-tab-btn active" data-tab="matrix-tab">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        105 Capabilities Matrix
+      </div>
+      <div class="cortex-tab-btn" data-tab="canvas-tab">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><circle cx="5" cy="19" r="2"/><line x1="12" y1="9" x2="12" y2="3"/><line x1="10" y1="14" x2="6" y2="18"/><line x1="14" y1="14" x2="18" y2="18"/><line x1="14" y1="10" x2="18" y2="6"/><line x1="10" y1="10" x2="6" y2="6"/></svg>
+        3D Synaptic Neural Canvas
+      </div>
+      <div class="cortex-tab-btn" data-tab="forge-tab">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        AgentForge Subagent Synthesizer
+      </div>
+      <div class="cortex-tab-btn" data-tab="guard-tab">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Hallucination Reality-Lock
+      </div>
+      <div class="cortex-tab-btn" data-tab="matryoshka-tab">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+        Matryoshka L0-L3 Zoomer
+      </div>
+      <div class="cortex-tab-btn" data-tab="shadow-tab">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        Shadow Workspace CoW Simulator
+      </div>
+    </div>
+
+    <!-- PANE 1: 105 Capabilities Matrix -->
+    <div class="cortex-pane active" id="pane-matrix-tab">
+      <div class="matrix-filter-bar">
+        <div class="pillar-filter-pills" id="pillar-filters">
+          <button class="filter-pill active" data-pillar="all">All (105)</button>
+          <button class="filter-pill" data-pillar="1">I. AST &amp; Compiler (15)</button>
+          <button class="filter-pill" data-pillar="2">II. Matryoshka Tokens (15)</button>
+          <button class="filter-pill" data-pillar="3">III. Shadow Workspace (15)</button>
+          <button class="filter-pill" data-pillar="4">IV. Telemetry (15)</button>
+          <button class="filter-pill" data-pillar="5">V. Orchestration (15)</button>
+          <button class="filter-pill" data-pillar="6">VI. Cognitive Memory (15)</button>
+          <button class="filter-pill" data-pillar="7">VII. Hardware &amp; Security (15)</button>
+        </div>
+        <div class="matrix-search-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="matrix-search-input" placeholder="Search 105 capabilities by name, tag, or description...">
+        </div>
+      </div>
+      <div class="matrix-grid" id="matrix-cards-container">
+        <!-- Generated dynamically by app.js -->
+      </div>
+    </div>
+
+    <!-- PANE 2: 3D Synaptic Neural Canvas -->
+    <div class="cortex-pane" id="pane-canvas-tab">
+      <div class="neural-canvas-card">
+        <div class="canvas-top-bar">
+          <div class="canvas-legend">
+            <span class="legend-item"><span class="legend-dot dot-cyan"></span> Fleet Agents (12)</span>
+            <span class="legend-item"><span class="legend-dot dot-purple"></span> 7 Grand Pillars</span>
+            <span class="legend-item"><span class="legend-dot dot-emerald"></span> AST Core Substrates</span>
+            <span class="legend-item"><span class="legend-dot dot-coral"></span> Synaptic Pulse (Live)</span>
+          </div>
+          <div class="canvas-actions">
+            <button class="btn btn-outline-sm" id="btn-pulse-synapse">⚡ Fire Synaptic Impulse</button>
+            <button class="btn btn-outline-sm" id="btn-reset-cortex-view">Reset Topology</button>
+          </div>
+        </div>
+        <div class="canvas-view-wrap">
+          <canvas id="neural-cortex-canvas" width="1000" height="480"></canvas>
+          <div class="neural-inspector" id="neural-inspector">
+            <div class="inspector-badge" id="insp-badge">AGENT FLEET</div>
+            <h4 class="inspector-title" id="insp-title">Select any node</h4>
+            <p class="inspector-desc" id="insp-desc">Click any Fleet Agent or Pillar Node on the neural canvas to inspect its role, active scope, and real-time telemetry.</p>
+            <div class="inspector-tags" id="insp-tags"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANE 3: AgentForge Subagent Studio -->
+    <div class="cortex-pane" id="pane-forge-tab">
+      <div class="forge-studio-grid">
+        <div class="forge-form-card">
+          <h3 class="forge-title">🔨 Synthesize Custom Autonomous Subagent</h3>
+          <p class="forge-sub">Generate tailored subagent instructions (.cursorrules / SKILL.md / agent.json) with surgical AST context scope.</p>
+          <div class="form-group">
+            <label>Subagent Role Name:</label>
+            <input type="text" id="forge-role" value="GraphQLMigrationExpert" placeholder="e.g. SecurityAuditor, DbOptimizer">
+          </div>
+          <div class="form-group">
+            <label>Domain Mission / Objective:</label>
+            <textarea id="forge-task" rows="3" placeholder="Describe the specific engineering task...">Migrate REST API controllers to Apollo GraphQL schema with zero-leak connection security</textarea>
+          </div>
+          <div class="form-group">
+            <label>Context Isolation Tier:</label>
+            <select id="forge-tier">
+              <option value="T-2" selected>Tier-2: AST Typed Signatures (-90% tokens)</option>
+              <option value="T-1">Tier-1: High-Level Module Outline (-95% tokens)</option>
+              <option value="T-3">Tier-3: Focused Body &amp; Downstream Callers</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" id="btn-forge-synthesize">⚡ Synthesize Subagent Now</button>
+        </div>
+        <div class="forge-output-card">
+          <div class="forge-output-header">
+            <span>Generated Subagent Bundle (.tzero/agents)</span>
+            <button class="btn btn-outline-sm" id="btn-copy-forge">📋 Copy Manifest</button>
+          </div>
+          <pre class="forge-code"><code id="forge-code-preview">// Click 'Synthesize Subagent Now' to generate bundle...</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANE 4: Hallucination Reality-Lock Playground -->
+    <div class="cortex-pane" id="pane-guard-tab">
+      <div class="guard-studio-grid">
+        <div class="guard-editor-card">
+          <div class="guard-header">
+            <span>Candidate AI Code</span>
+            <div class="guard-presets">
+              <button class="preset-btn active" id="btn-preset-valid">Valid Code</button>
+              <button class="preset-btn" id="btn-preset-hallucinated">Hallucinated Method</button>
+            </div>
+          </div>
+          <textarea id="guard-code-input" spellcheck="false">import math
+import os
+
+def compute_metrics(x):
+    # Valid call to standard library
+    return math.sqrt(x) + len(os.getcwd())
+</textarea>
+          <button class="btn btn-primary" id="btn-run-reality-lock">🛡️ Run Pre-Flight Reality-Lock Verification</button>
+        </div>
+        <div class="guard-result-card">
+          <div class="guard-header">
+            <span>Pre-Flight Verification Status</span>
+          </div>
+          <div class="guard-status-display" id="guard-status-box">
+            <div class="status-icon green-icon">✅</div>
+            <h3 class="status-title" id="guard-status-title">REALITY-LOCK PASS</h3>
+            <p class="status-desc" id="guard-status-desc">All invoked methods and imported modules match verified AST symbol contracts.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANE 5: Matryoshka Context Zoomer (L0 - L3) -->
+    <div class="cortex-pane" id="pane-matryoshka-tab">
+      <div class="matryoshka-card">
+        <div class="matryoshka-header">
+          <div>
+            <h3>Progressive Matryoshka Resolution (L0 &rarr; L3)</h3>
+            <p>Dynamically scale context granularity to fit any LLM context budget</p>
+          </div>
+          <div class="layer-buttons">
+            <button class="layer-btn active" data-layer="L0">L0 (10 Tokens)</button>
+            <button class="layer-btn" data-layer="L1">L1 (50 Tokens)</button>
+            <button class="layer-btn" data-layer="L2">L2 (200 Tokens)</button>
+            <button class="layer-btn" data-layer="L3">L3 (Full Code)</button>
+          </div>
+        </div>
+        <div class="matryoshka-preview">
+          <div class="preview-metrics">
+            <span>Active Layer: <strong id="mat-active-layer" class="cyan-text">L0 (Summary Purpose)</strong></span>
+            <span>Token Overhead: <strong id="mat-token-cost" class="green-text">~12 tokens (-98.8%)</strong></span>
+          </div>
+          <pre class="mat-code-box"><code id="mat-code-display"># [calc.py L0]: Core mathematical calculator and matrix factorization service.</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANE 6: Shadow Workspace CoW Simulator -->
+    <div class="cortex-pane" id="pane-shadow-tab">
+      <div class="shadow-card">
+        <div class="shadow-top-bar">
+          <div class="shadow-status">
+            <span class="live-dot purple-dot"></span>
+            <span>VIRTUAL OVERLAYFS (CoW): <strong>3 FILES STAGED IN RAM</strong> (0 BYTES ON DISK)</span>
+          </div>
+          <div class="shadow-actions">
+            <button class="btn btn-outline-sm" id="btn-cow-rollback">⏪ Atomic Rollback</button>
+            <button class="btn btn-primary-sm" id="btn-cow-commit">💾 ACID Commit</button>
+          </div>
+        </div>
+        <div class="shadow-diff-viewer">
+          <div class="diff-header">
+            <span>Staged In-Memory Diff (Dry-Run Verification Passed)</span>
+            <span class="badge badge-emerald">LINTER GREEN</span>
+          </div>
+          <pre class="diff-content"><code>--- a/services/auth.py
++++ b/services/auth.py
+@@ -14,6 +14,8 @@
+ class AuthService:
+-    def login(self, username, password):
+-        return authenticate_legacy(username, password)
++    def login(self, username: str, password: str) -> AuthToken:
++        # Refactored to zero-leak token synthesis
++        return self.token_factory.generate_ephemeral(username)
+</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Verified Table & Visual Bars -->
+  <section class="section" id="files-section">
+    <div class="section-header animate-on-scroll">
+      <div class="section-label">FILE BREAKDOWN</div>
+      <h2 class="section-title">Verified Per-Module Measurements</h2>
+      <p class="section-subtitle">Exact character, line, and token count reductions computed across T-Zero repository files</p>
+    </div>
+
+    <div class="table-container animate-on-scroll">
+      <table class="benchmark-table">
+        <thead>
+          <tr>
+            <th>File Name</th>
+            <th>Lines</th>
+            <th>Raw Characters</th>
+            <th>Raw Tokens (1:1)</th>
+            <th>T-Zero Ultra AST</th>
+            <th>Net Reduction</th>
+            <th>Integrity</th>
+          </tr>
+        </thead>
+        <tbody id="benchmark-tbody">
+          <!-- Populated by JavaScript -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Visual Bar Comparison -->
+    <div class="chart-wrapper animate-on-scroll">
+      <h3 class="chart-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        Visual Comparison — Raw Volume vs T-Zero Ultra AST
+      </h3>
+      <div id="visual-bars" class="visual-bars">
+        <!-- Rendered by JavaScript -->
+      </div>
+    </div>
+
+    <!-- Interactive AST Code Inspector -->
+    <div class="inspector-widget animate-on-scroll">
+      <div class="inspector-header">
+        <div class="file-tabs" id="file-tabs">
+          <button class="tab-btn active" data-file="tzero_v3.py">📄 tzero_v3.py (6,008L)</button>
+          <button class="tab-btn" data-file="tzero_features.py">📄 tzero_features.py (1,031L)</button>
+          <button class="tab-btn" data-file="app.py">📄 app.py (1,750L)</button>
+          <button class="tab-btn" data-file="tzero_deps.py">📄 tzero_deps.py (235L)</button>
+          <button class="tab-btn" data-file="main.py">📄 main.py (54L)</button>
+        </div>
+        <div class="mode-tabs" id="mode-tabs">
+          <button class="mode-btn active" data-mode="ultra">⚡ Ultra AST (-94%)</button>
+          <button class="mode-btn" data-mode="balanced">⚖️ Balanced (-55%)</button>
+          <button class="mode-btn" data-mode="raw">📄 Raw Source</button>
+        </div>
+      </div>
+      <div class="inspector-meta-bar">
+        <div class="inspector-meta-left">
+          <span id="editor-title" style="font-weight: 600; color: var(--accent-cyan);">tzero_v3.py — Ultra AST Signatures (-94.4%)</span>
+          <span class="badge badge-success" id="active-reduction">-94.40%</span>
+          <span id="active-tokens" style="font-family: var(--font-mono); color: var(--text-muted);">3,800 tokens</span>
+        </div>
+        <button class="copy-btn-sm" id="copy-code-btn">Copy Pruned Code</button>
+      </div>
+      <div class="inspector-code-wrap">
+        <pre><code id="code-display">// AST pruned code will load here...</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- 37 Native MCP Tools Suite -->
+  <section class="section" id="tools">
+    <div class="section-header animate-on-scroll">
+      <div class="section-label">AUTONOMOUS SUITE</div>
+      <h2 class="section-title">All 37 Native Model Context Protocol (MCP) Tools</h2>
+      <p class="section-subtitle">Instant codebase context, memory synthesis, and security guardrails for any MCP-compliant AI assistant</p>
+    </div>
+
+    <!-- Search & Filter Controls -->
+    <div class="tools-controls animate-on-scroll">
+      <div class="tool-search-box">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="tool-search-input" placeholder="Search 37 MCP tools by name, description, or keyword (e.g. 'swarm', 'ast', 'security')...">
+      </div>
+      <div class="tool-filter-chips" id="tool-filter-chips">
+        <button class="filter-chip active" data-filter="all">All (37)</button>
+        <button class="filter-chip" data-filter="ast">Context &amp; AST (12)</button>
+        <button class="filter-chip" data-filter="memory">Memory &amp; Graph (10)</button>
+        <button class="filter-chip" data-filter="security">Security &amp; Guard (8)</button>
+        <button class="filter-chip" data-filter="swarm">Swarm &amp; Consensus (7)</button>
+      </div>
+    </div>
+
+    <!-- Dynamic Tools Grid -->
+    <div class="tools-grid animate-on-scroll" id="mcp-tools-container">
+      <!-- 37 Tools Rendered Dynamically with Filter and Search Support -->
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- NEW: 1-CLICK AGENT INTEGRATION CONFIG GENERATOR -->
+  <!-- ========================================================================= -->
+  <section class="section" id="agent-setup">
+    <div class="section-header animate-on-scroll">
+      <div class="section-label">1-CLICK INTEGRATION</div>
+      <h2 class="section-title">Connect T-Zero to Your Favorite AI Coding Agent</h2>
+      <p class="section-subtitle">Copy-paste ready configuration snippets for Cursor, Claude Desktop, Windsurf, Cline, and Zed</p>
+    </div>
+
+    <div class="agent-setup-card animate-on-scroll">
+      <div class="agent-tabs" id="agent-tabs">
+        <button class="agent-tab active" data-target="claude">
+          <span class="agent-icon">🟣</span> Claude Desktop
+        </button>
+        <button class="agent-tab" data-target="cursor">
+          <span class="agent-icon">⚡</span> Cursor IDE
+        </button>
+        <button class="agent-tab" data-target="antigravity">
+          <span class="agent-icon">🚀</span> Antigravity IDE
+        </button>
+        <button class="agent-tab" data-target="windsurf">
+          <span class="agent-icon">🌊</span> Windsurf
+        </button>
+        <button class="agent-tab" data-target="cline">
+          <span class="agent-icon">🤖</span> Cline / Roo-Code
+        </button>
+        <button class="agent-tab" data-target="cli">
+          <span class="agent-icon">💻</span> Terminal CLI
+        </button>
+      </div>
+
+      <div class="agent-config-box">
+        <div class="agent-box-header">
+          <div class="config-path" id="config-path">~/Library/Application Support/Claude/claude_desktop_config.json</div>
+          <button class="copy-btn-sm" id="agent-copy-btn">Copy Configuration</button>
+        </div>
+        <pre><code class="code-content" id="agent-config-code">Loading...</code></pre>
+      </div>
+
+      <div class="agent-notes-bar">
+        <span>✅ <strong>Zero API Keys Required:</strong> T-Zero executes locally over standard stdio with 100% offline security.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Financial ROI Calculator -->
+  <section class="section" id="calculator">
+    <div class="section-header animate-on-scroll">
+      <div class="section-label">FINANCIAL IMPACT</div>
+      <h2 class="section-title">ROI &amp; Cost Savings Calculator</h2>
+      <p class="section-subtitle">Calculate the net dollar savings T-Zero delivers to your team's monthly AI API bills</p>
+    </div>
+
+    <div class="calc-grid animate-on-scroll">
+      <div class="calc-inputs-card">
+        <h3 class="calc-card-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.32 9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+          Settings &amp; Parameters
+        </h3>
+        
+        <div class="control-group">
+          <label for="req-slider">Monthly Code Queries / Prompts: <span id="req-val" class="slider-val">5,000 requests</span></label>
+          <input type="range" id="req-slider" min="500" max="50000" step="500" value="5000">
+          <div class="calc-presets" id="req-presets">
+            <button class="calc-preset-btn" data-type="req" data-val="1000">1,000 / mo</button>
+            <button class="calc-preset-btn active" data-type="req" data-val="5000">5,000 / mo</button>
+            <button class="calc-preset-btn" data-type="req" data-val="15000">15,000 / mo</button>
+            <button class="calc-preset-btn" data-type="req" data-val="30000">30,000 / mo</button>
+            <button class="calc-preset-btn" data-type="req" data-val="50000">50,000 / mo</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label for="dev-slider">Engineering Team Size: <span id="dev-val" class="slider-val">3 developers</span></label>
+          <input type="range" id="dev-slider" min="1" max="50" step="1" value="3">
+          <div class="calc-presets" id="dev-presets">
+            <button class="calc-preset-btn" data-type="dev" data-val="1">1 Solo</button>
+            <button class="calc-preset-btn active" data-type="dev" data-val="3">3 Startup</button>
+            <button class="calc-preset-btn" data-type="dev" data-val="8">8 Squad</button>
+            <button class="calc-preset-btn" data-type="dev" data-val="20">20 Scale</button>
+            <button class="calc-preset-btn" data-type="dev" data-val="50">50 Org</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label>Target LLM Model:</label>
+          <div class="model-cards" id="model-selector">
+            <div class="model-chip active" data-cost="2.50" data-name="OpenAI GPT-4o">
+              <div class="model-chip-left">
+                <span class="model-check">✓</span>
+                <span class="model-name">GPT-4o</span>
+              </div>
+              <span class="model-rate">$2.50 / 1M tokens</span>
+            </div>
+            <div class="model-chip" data-cost="3.00" data-name="Claude 3.5 Sonnet">
+              <div class="model-chip-left">
+                <span class="model-check">✓</span>
+                <span class="model-name">Claude 3.5 Sonnet</span>
+              </div>
+              <span class="model-rate">$3.00 / 1M tokens</span>
+            </div>
+            <div class="model-chip" data-cost="1.25" data-name="Gemini 1.5 Pro">
+              <div class="model-chip-left">
+                <span class="model-check">✓</span>
+                <span class="model-name">Gemini 1.5 Pro</span>
+              </div>
+              <span class="model-rate">$1.25 / 1M tokens</span>
+            </div>
+            <div class="model-chip" data-cost="0.88" data-name="NVIDIA NIM 70B">
+              <div class="model-chip-left">
+                <span class="model-check">✓</span>
+                <span class="model-name">NVIDIA NIM 70B</span>
+              </div>
+              <span class="model-rate">$0.88 / 1M tokens</span>
+            </div>
+            <div class="model-chip" data-cost="0.14" data-name="DeepSeek V3">
+              <div class="model-chip-left">
+                <span class="model-check">✓</span>
+                <span class="model-name">DeepSeek V3</span>
+              </div>
+              <span class="model-rate">$0.14 / 1M tokens</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="calc-results-card">
+        <h3 class="calc-card-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-emerald)" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          Live Net Savings Report
+        </h3>
+        
+        <div class="result-row">
+          <span class="res-label">Monthly Raw Token Volume:</span>
+          <strong class="res-num" id="calc-raw-tokens">1,533,975,000 tokens</strong>
+        </div>
+
+        <div class="result-row">
+          <span class="res-label">After T-Zero AST Pruning:</span>
+          <strong class="res-num cyan-text" id="calc-tzero-tokens">79,110,000 tokens</strong>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="result-row">
+          <span class="res-label">Standard Cost (Without T-Zero):</span>
+          <strong class="res-num red-text" id="calc-raw-cost">$3,834.94 / mo</strong>
+        </div>
+
+        <div class="result-row">
+          <span class="res-label">Optimized Cost with T-Zero:</span>
+          <strong class="res-num green-text" id="calc-tzero-cost">$197.78 / mo</strong>
+        </div>
+
+        <div class="savings-banner">
+          <div class="savings-title">ANNUAL NET DOLLAR SAVINGS:</div>
+          <div class="savings-amount" id="calc-annual-savings">$43,645.92 / YEAR</div>
+          <div class="savings-note">ROI Payback Period: <strong>Instant (Day 1)</strong></div>
+        </div>
+
+        <button class="btn btn-outline-sm" id="calc-copy-btn" style="width: 100%; margin-top: 16px; justify-content: center; padding: 12px; font-weight: 600;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          Copy ROI Report Summary
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- NEW: STANDALONE BINARIES DOWNLOAD CENTER -->
+  <!-- ========================================================================= -->
+  <section class="section" id="downloads">
+    <div class="section-header animate-on-scroll">
+      <div class="section-label">OFFICIAL RELEASES</div>
+      <h2 class="section-title">Official Standalone Downloads &amp; Extensions (v11.11.0)</h2>
+      <p class="section-subtitle">No Python or virtual environment required. Download verified standalone .exe binaries with SHA-256 signatures.</p>
+    </div>
+
+        <div class="downloads-grid animate-on-scroll">
+      <!-- 1. All-in-One Master Bundle -->
+      <div class="download-card highlight-card" style="border-color: rgba(168, 85, 247, 0.6); background: rgba(20, 15, 38, 0.95);">
+        <div class="dl-badge" style="background: linear-gradient(135deg, #a855f7, #6366f1); color: #fff;">Complete 4-Binary Suite (.ZIP)</div>
+        <div class="dl-icon">📦</div>
+        <h3 class="dl-name">TZero-v11.11.0-Windows-x64.zip</h3>
+        <p class="dl-desc">Master offline release archive containing TZeroAlgorithm.exe (GUI), TZeroCLI.exe (Console), TZeroMCP.exe (MCP), and AddMCP.exe (Installer).</p>
+        <div class="dl-meta">
+          <span>Size: <strong>263.4 MB</strong></span>
+          <span>Version: <strong>v11.11.0</strong></span>
+        </div>
+        <a href="https://github.com/toprakahmetaydogmus/TZeroAlgorithm/releases/download/v11.11.0/TZero-v11.11.0-Windows-x64.zip" target="_blank" rel="noopener noreferrer" download class="btn btn-hero-primary" style="background: linear-gradient(135deg, #9333ea, #6366f1);" data-name="TZero-v11.11.0-Windows-x64.zip">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Master Suite (.ZIP)
+        </a>
+        <div class="dl-sha">
+          <span>SHA-256: <code class="sha-copy" data-sha="b89ce93f7055098e6e004be69839a41412b6437c12da14cd84b7124191a440bf" title="Click to copy full SHA-256">b89ce93f7055... 📋</code></span>
+          <a href="https://github.com/toprakahmetaydogmus/TZeroAlgorithm/releases/tag/v11.11.0" target="_blank" rel="noopener noreferrer" class="sha-link">Verify</a>
+        </div>
+      </div>
+
+      <!-- 2. Standalone Desktop GUI Cockpit -->
+      <div class="download-card highlight-card">
+        <div class="dl-badge badge-cyan">Desktop Control Center</div>
+        <div class="dl-icon">🖥️</div>
+        <h3 class="dl-name">TZeroAlgorithm.exe</h3>
+        <p class="dl-desc">Standalone GUI, Codebase Scanner, Token Reducer & offline AST audit dashboard suite. High-performance desktop cockpit.</p>
+        <div class="dl-meta">
+          <span>Size: <strong>63.65 MB</strong></span>
+          <span>Version: <strong>v11.11.0</strong></span>
+        </div>
+        <a href="https://github.com/toprakahmetaydogmus/TZeroAlgorithm/releases/download/v11.11.0/TZeroAlgorithm.exe" target="_blank" rel="noopener noreferrer" download class="btn btn-hero-primary" data-name="TZeroAlgorithm.exe">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Desktop GUI
+        </a>
+        <div class="dl-sha">
+          <span>SHA-256: <code class="sha-copy" data-sha="131c65480449f36630ee75b572657b9dc136dc83b4b3c5c7382ab7b8e20ce1dc" title="Click to copy full SHA-256">131c65480449... 📋</code></span>
+          <a href="https://github.com/toprakahmetaydogmus/TZeroAlgorithm/releases/tag/v11.11.0" target="_blank" rel="noopener noreferrer" class="sha-link">Verify</a>
+        </div>
+      </div>
+
+      <!-- 3. Dedicated CLI Executable -->
+      <div class="download-card highlight-card">
+        <div class="dl-badge badge-cyan">Interactive Terminal HUD</div>
+        <div class="dl-icon">⚡</div>
+        <h3 class="dl-name">TZeroCLI.exe</h3>
+        <p class="dl-desc">Console command-line tool with live AST token pruner, multi-tier context tree generator, and interactive terminal cockpit.</p>
+        <div class="dl-meta">
+          <span>Size: <strong>63.48 MB</strong></span>
+          <span>Version: <strong>v11.11.0</strong></span>
+        </div>
+        <a href="https://github.com/toprakahmetaydogmus/TZeroAlgorithm/releases/download/v11.11.0/TZeroCLI.exe" target="_blank" rel="noopener noreferrer" download class="btn btn-hero-primary" data-name="TZeroCLI.exe">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download CLI Executable
+        </a>
+        <div class="dl-sha">
+          <span>SHA-256: <code class="sha-copy" data-sha="b25cf1a80871a7c7a5f9397cc4dfe9a4b72b4df043d1c4830e91a7416c8d961d" title="Click to copy full SHA-256">b25cf1a80871... 📋</code></span>
+          <a href="https://github.com/toprakahmetaydogmus/TZeroAlgorithm/releases/tag/v11.11.0" target="_blank" rel="noopener noreferrer" class="sha-link">Verify</a>
+        </div>
+      </div>
+
+      <!-- 4. Standalone MCP Server -->
+      <div class="download-card">
+        <div class="dl-badge">TDQS 5/5 MCP Server</div>
+        <div class="dl-icon">🤖</div>
+        <h3 class="dl-name">TZeroMCP.exe</h3>
+        <p class="dl-desc">Model Context Protocol stdio server exposing 52 canonical tools directly to Cursor, Claude Desktop, Antigravity, and Copilot.</p>
+        <div class="dl-meta">
+          <span>Size: <strong>61.76 MB</strong></span>
+          <span>Version: <strong>v11.11.0</strong></span>
+        </div>
+        <a href="https://github.com/toprakahmetaydogmus/TZeroAlgorithm/releases/download/v11.11.0/TZeroMCP.exe" target="_blank" rel="noopener noreferrer" download class="btn btn-dl" data-name="TZeroMCP.exe">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download MCP Server
+        </a>
+        <div class="dl-sha">
+          <span>SHA-256: <code class="sha-copy" data-sha="8f153e5a23f5c9189ba96c341f5f282177c28e69deca49b44f626e8f88acad8a" title="Click to copy full SHA-256">8f153e5a23f5... 📋</code></span>
+          <a href="https://github.com/toprakahmetaydogmus/TZeroAlgorithm/releases/tag/v11.11.0" target="_blank" rel="noopener noreferrer" class="sha-link">Verify</a>
+        </div>
+      </div>
+
+      <!-- 5. 1-Click Auto Installer -->
+      <div class="download-card">
+        <div class="dl-badge">Auto Installer</div>
+        <div class="dl-icon">⚙️</div>
+        <h3 class="dl-name">AddMCP.exe</h3>
+        <p class="dl-desc">1-Click configuration installer that discovers Cursor, VS Code, Claude Desktop, Antigravity, Windsurf & Zed to inject T-Zero automatically.</p>
+        <div class="dl-meta">
+          <span>Size: <strong>76.45 MB</strong></span>
+          <span>Version: <strong>v11.11.0</strong></span>
+        </div>
+        <a href="https://github.com/toprakahmetaydogmus/TZeroAlgorithm/releases/download/v11.11.0/AddMCP.exe" target="_blank" rel="noopener noreferrer" download class="btn btn-dl" data-name="AddMCP.exe">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Auto Installer
+        </a>
+        <div class="dl-sha">
+          <span>SHA-256: <code class="sha-copy" data-sha="3cf6732788309af0c824505c05899ba613f00610727ebfbadd3668e726a8ec0a" title="Click to copy full SHA-256">3cf673278830... 📋</code></span>
+          <a href="https://github.com/toprakahmetaydogmus/TZeroAlgorithm/releases/tag/v11.11.0" target="_blank" rel="noopener noreferrer" class="sha-link">Verify</a>
+        </div>
+      </div>
+
+      <!-- 6. VS Code / Cursor Extension (.VSIX) -->
+      <div class="download-card">
+        <div class="dl-badge">VS Code & Cursor</div>
+        <div class="dl-icon">🧩</div>
+        <h3 class="dl-name">tzero-vscode-11.11.0.vsix</h3>
+        <p class="dl-desc">Official VS Code & Cursor extension providing 1-click token pruning, AST architecture mapping, and real-time ROI savings.</p>
+        <div class="dl-meta">
+          <span>Size: <strong>50.13 KB</strong></span>
+          <span>Version: <strong>v11.11.0</strong></span>
+        </div>
+        <a href="https://github.com/toprakahmetaydogmus/TZeroAlgorithm/releases/download/v11.11.0/tzero-vscode-11.11.0.vsix" target="_blank" rel="noopener noreferrer" download class="btn btn-dl" data-name="tzero-vscode-11.11.0.vsix">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Extension (.VSIX)
+        </a>
+        <div class="dl-sha">
+          <span>SHA-256: <code class="sha-copy" data-sha="61c7d0d733fd60bdd3c865daf7cfa993514d89da050eb972652eee9470c60348" title="Click to copy full SHA-256">61c7d0d733fd... 📋</code></span>
+          <a href="https://github.com/toprakahmetaydogmus/TZeroAlgorithm/releases/tag/v11.11.0" target="_blank" rel="noopener noreferrer" class="sha-link">Verify</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Zero-Leak Security -->
+  <section class="section" id="security">
+    <div class="section-header animate-on-scroll">
+      <div class="section-label">SECURITY POSTURE</div>
+      <h2 class="section-title">100% Zero-Leak OS Keyring Architecture</h2>
+      <p class="section-subtitle">Comparing traditional plaintext dev tools against T-Zero's local-vault architecture</p>
+    </div>
+
+    <div class="security-grid animate-on-scroll">
+      <div class="security-col security-bad">
+        <div class="sec-col-header">
+          <div class="sec-icon sec-icon-bad">✕</div>
+          <h3>Traditional AI Coding Tools</h3>
+        </div>
+        <ul class="sec-list">
+          <li>API keys stored as plaintext in <code>.env</code> or <code>config.json</code></li>
+          <li>Accidental git commits leak sensitive keys to public GitHub within seconds</li>
+          <li>Source code and telemetry streams dispatched to 3rd-party servers</li>
+          <li>Heavy monthly cloud embeddings bills for basic code search</li>
+        </ul>
+      </div>
+
+      <div class="security-col security-good">
+        <div class="sec-col-header">
+          <div class="sec-icon sec-icon-good">✓</div>
+          <h3>T-Zero v11.11.0 Sovereign (Zero-Leak)</h3>
+        </div>
+        <ul class="sec-list">
+          <li>API keys encrypted directly in OS vaults (<strong>Windows Credential Manager, macOS Keychain, Linux Secret Service</strong>)</li>
+          <li>Zero keys ever written to workspace files or git commit history</li>
+          <li><strong>100% Zero Telemetry:</strong> Code never leaves your local machine</li>
+          <li><strong>Pure Local AST:</strong> Token pruning &amp; BM25 semantic search operates 100% offline at $0 cost</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / Quickstart -->
+  <section class="section cta-section">
+    <div class="cta-box animate-on-scroll">
+      <h2 class="cta-title">Upgrade Your AI Agents with T-Zero Today</h2>
+      <p class="cta-subtitle">Install in 10 seconds via PyPI and cut up to 95% of prompt context consumption.</p>
+      
+      <div class="cmd-box">
+        <span class="cmd-prompt">$</span>
+        <span class="cmd-text">pip install tzero-mcp</span>
+        <button class="cmd-copy" id="cmd-copy-btn">Copy</button>
+      </div>
+
+      <div class="cta-links">
+        <span>Verified Compatible With:</span>
+        <span class="env-pill">Cursor</span>
+        <span class="env-pill">Claude Desktop</span>
+        <span class="env-pill">Windsurf</span>
+        <span class="env-pill">Antigravity IDE</span>
+        <span class="env-pill">Cline</span>
+        <span class="env-pill">Zed</span>
+        <span class="env-pill">VS Code</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <strong>T-Zero Context Architect v11.11.0 Sovereign Release</strong>
+        <p>Developer: Toprak Ahmet Aydoğmuş (Siber Akademi) • Open Source MIT License</p>
+      </div>
+      <div class="footer-right">
+        <a href="https://github.com/toprakahmetaydogmus/TZeroAlgorithm" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://pypi.org/project/tzero-mcp/" target="_blank" rel="noopener">PyPI</a>
+        <a href="https://glama.ai/mcp/servers/toprakahmetaydogmus/TZeroAlgorithm" target="_blank" rel="noopener">Glama</a>
+        <a href="https://linkedin.com/in/toprak-ahmet-aydo%C4%9Fmu%C5%9F-60462534b/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://hopp.bio/siberegitim" target="_blank" rel="noopener">Bio &amp; Hub</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Toast Notification System -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="app.js?v=11.11.0"></script>
+</body>
+</html>

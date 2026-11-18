@@ -1,0 +1,110 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# PyInstaller / Build artifacts
+/build/
+!scripts/build/
+dist/
+*.vsix
+*.spec
+*.egg-info/
+
+# Virtual Environments
+venv/
+.venv/
+.venv*/
+env/
+.env*
+*.local
+.vercel/
+brag-output/
+
+# Secrets & Local User Configs
+*.dat
+*.key
+*.pem
+*.backup.json
+.nvidia_nim_config.json
+.tzero_config.json
+.tzero/
+*memory_store.json
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Node & Video Outputs
+node_modules/
+tzero-showcase/node_modules/
+tzero-showcase/package-lock.json
+tzero-showcase/out/
+tzero-showcase/public/*.mp4
+*.mp4
+*.mp3
+!assets/*.mp4
+!assets/*.jpg
+!assets/*.gif
+# Automation & Profiles
+.reddit_profile/
+# Private B2B Gateway & Outreach Engine (Strictly Private - Never Push)
+tzero_gateway.py
+auto_outreach.py
+gateway_savings.json
+outreach_status.json
+.outreach_config.json
+test_gateway_client.py
+whatsapp_ai_agent/
+enterprise_onprem/
+auto_onprem_outreach.py
+onprem_outreach_status.json
+.tzero_cache.db
+*.db
+used_permalinks.json
+.superpowers/
+scripts/reddit_poster.py
+*reddit*.py
+.reddit_profile/
+
+
+
+# Internal Marketing, Outreach & Launch Drafts
+docs/DONANIM*
+docs/marketing_pack/
+docs/TWITTER*
+docs/REDDIT*
+docs/SHOW_HN*
+docs/viral*
+docs/VIRAL*
+docs/video_reel*
+docs/superpowers/
+
+tzero_showcase.html
+tzero_graph_hud.html
+findings/
+victim/
+AGENT.md
+
+# TÜBİTAK Submissions, Project Reports, and Competitions (Strictly Private - Never Push)
+*[Tt][Uu][Bb][İiIi][Tt][Aa][Kk]*
+*tubitak*
+*TUBITAK*
+*2204*
+*proje_raporu*
+*Proje_Raporu*
+TZero_Proje_Raporu*
+*.docx
+*.pdf
+!assets/*.pdf
+sablon*
+

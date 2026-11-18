@@ -1,0 +1,44 @@
+{
+  "version": "5.0.0",
+  "project_name": "TZeroAlgorithm",
+  "architecture_pattern": "Autonomous CLI / Tool Architecture",
+  "layers": {
+    "tests": [
+      "tests/**"
+    ],
+    "core": [
+      "tzero/tzero_jarvis/**",
+      "main.py",
+      "tzero/tzero_v3.py"
+    ],
+    "cli": [
+      "addmcp.py",
+      "tzero/tzero_dashboard.py"
+    ],
+    "api": [
+      "app.py",
+      "tzero/tzero_mcp.py"
+    ],
+    "services": [
+      "tzero/tzero_features.py"
+    ]
+  },
+  "forbidden_imports": [
+    {
+      "from_layer": "core",
+      "cannot_import": [
+        "api",
+        "cli"
+      ],
+      "reason": "Çekirdek iş mantığı giriş/çıkış arayüzlerinden izole kalmalıdır."
+    }
+  ],
+  "security": {
+    "zero_leak_enforced": true,
+    "disallow_hardcoded_keys": true
+  },
+  "testing": {
+    "default_test_command": "python -m unittest discover -s tests -p \"test_*.py\"",
+    "default_lint_command": "flake8 ."
+  }
+}

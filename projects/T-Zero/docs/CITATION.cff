@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use Siber Akademi T-Zero Context Architect in your research or software, please cite it as below."
+authors:
+  - family-names: "Aydoğmuş"
+    given-names: "Toprak Ahmet"
+    affiliation: "Siber Akademi"
+title: "T-Zero: Enterprise Polyglot AST Context Architect, JARVIS Control Center, and 37-Tool Model Context Protocol Server for Autonomous AI Coding Agents"
+version: 6.1.0
+date-released: 2026-10-21
+url: "https://github.com/toprakahmetaydogmus/TZeroAlgorithm"
+repository-code: "https://github.com/toprakahmetaydogmus/TZeroAlgorithm"
+license: MIT
+keywords:
+  - "context window optimization"
+  - "abstract syntax tree"
+  - "model context protocol"
+  - "token reduction"
+  - "autonomous coding agents"
+  - "zero-leak security"

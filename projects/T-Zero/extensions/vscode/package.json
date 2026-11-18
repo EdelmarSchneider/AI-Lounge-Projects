@@ -1,0 +1,237 @@
+{
+  "name": "tzero-vscode",
+  "displayName": "T-Zero Context Architect & MCP",
+  "description": "Cut AI token costs by up to 95% with local AST pruning, Zero-Leak security audit, and 1-click MCP initialization for Cursor, Windsurf, and VS Code Copilot.",
+  "version": "11.15.1",
+  "publisher": "siber-akademi",
+  "license": "MIT",
+  "homepage": "https://tzero-indol.vercel.app",
+  "bugs": {
+    "url": "https://github.com/toprakahmetaydogmus/TZeroAlgorithm/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/toprakahmetaydogmus/TZeroAlgorithm.git"
+  },
+  "galleryBanner": {
+    "color": "#0b1120",
+    "theme": "dark"
+  },
+  "keywords": [
+    "mcp",
+    "cursor",
+    "claude",
+    "ast",
+    "token-reduction"
+  ],
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "icon": "icon.png",
+  "categories": [
+    "AI",
+    "Programming Languages",
+    "Formatters",
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onView:tzero.cockpitView"
+  ],
+  "main": "./src/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "tzeroSidebar",
+          "title": "T-Zero Context",
+          "icon": "icon.png"
+        }
+      ]
+    },
+    "views": {
+      "tzeroSidebar": [
+        {
+          "type": "webview",
+          "id": "tzero.cockpitView",
+          "name": "AST Cockpit & Telemetry"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "tzero.openMenu",
+        "title": "T-Zero: Open Command Center"
+      },
+      {
+        "command": "tzero.refreshMetrics",
+        "title": "T-Zero: Refresh Live AST Telemetry"
+      },
+      {
+        "command": "tzero.init",
+        "title": "T-Zero: Initialize AI Context & MCP (Cursor / Claude / Copilot)"
+      },
+      {
+        "command": "tzero.compressFile",
+        "title": "T-Zero: Compress Active File AST to Clipboard"
+      },
+      {
+        "command": "tzero.compressSelection",
+        "title": "T-Zero: Compress Selected Code AST to Clipboard"
+      },
+      {
+        "command": "tzero.showTree",
+        "title": "T-Zero: Generate & View Workspace Context Tree"
+      },
+      {
+        "command": "tzero.audit",
+        "title": "T-Zero: Run Zero-Leak Security Secret Audit"
+      },
+      {
+        "command": "tzero.explain",
+        "title": "T-Zero: Generate AST Architectural Passport (--explain)"
+      },
+      {
+        "command": "tzero.review",
+        "title": "T-Zero: Autonomous Pre-Commit & PR Review (--review)"
+      },
+      {
+        "command": "tzero.watch",
+        "title": "T-Zero: Start Live AST Context Watcher (--watch)"
+      },
+      {
+        "command": "tzero.doctor",
+        "title": "T-Zero: System Diagnostics & Auto-Fix (--doctor)"
+      },
+      {
+        "command": "tzero.debt",
+        "title": "T-Zero: Analyze Code Health & Technical Debt (--debt)"
+      },
+      {
+        "command": "tzero.budget",
+        "title": "T-Zero: Optimize Token Budget & Issue Certificate (--budget)"
+      },
+      {
+        "command": "tzero.contracts",
+        "title": "T-Zero: Audit Public API Contracts & SemVer (--contracts)"
+      },
+      {
+        "command": "tzero.golden",
+        "title": "T-Zero: Generate or Verify Golden AST Baseline (--golden)"
+      },
+      {
+        "command": "tzero.mutate",
+        "title": "T-Zero: Run AST Mutation Test on Active File (--mutate)"
+      },
+      {
+        "command": "tzero.bridge",
+        "title": "T-Zero: Transpile Polyglot Types & Schemas (--bridge)"
+      },
+      {
+        "command": "tzero.mergeHeal",
+        "title": "T-Zero: Semantic 3-Way Merge Conflict Healer (--merge-heal)"
+      },
+      {
+        "command": "tzero.openDashboard",
+        "title": "T-Zero: Open Local Web Benchmark & Console"
+      },
+      {
+        "command": "tzero.copySymbolContract",
+        "title": "T-Zero: Copy Symbol AST Contract"
+      },
+      {
+        "command": "tzero.lspCheck",
+        "title": "T-Zero: Check Architecture & Zero-Leak Diagnostics (--check-arch)"
+      },
+      {
+        "command": "tzero.hookInstall",
+        "title": "T-Zero: Install AI Lifecycle Hooks (--hook-install all)"
+      },
+      {
+        "command": "tzero.federationImpact",
+        "title": "T-Zero: Cross-Repo Federation Impact (--federation impact)"
+      },
+      {
+        "command": "tzero.grounding",
+        "title": "T-Zero: Copy Immutable AST Grounding Contract (--grounding-contract)"
+      },
+      {
+        "command": "tzero.pack",
+        "title": "T-Zero: Pack Repository Context to Token Budget (--pack)"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "tzero.grounding",
+          "group": "tzero@0"
+        },
+        {
+          "command": "tzero.compressSelection",
+          "when": "editorHasSelection",
+          "group": "tzero@1"
+        },
+        {
+          "command": "tzero.compressFile",
+          "group": "tzero@2"
+        },
+        {
+          "command": "tzero.pack",
+          "group": "tzero@3"
+        },
+        {
+          "command": "tzero.explain",
+          "group": "tzero@4"
+        },
+        {
+          "command": "tzero.audit",
+          "group": "tzero@5"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "tzero.grounding",
+          "group": "tzero@0"
+        },
+        {
+          "command": "tzero.pack",
+          "group": "tzero@1"
+        },
+        {
+          "command": "tzero.showTree",
+          "group": "tzero@2"
+        },
+        {
+          "command": "tzero.audit",
+          "group": "tzero@3"
+        },
+        {
+          "command": "tzero.debt",
+          "group": "tzero@4"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "T-Zero",
+      "properties": {
+        "tzero.executablePath": {
+          "type": "string",
+          "default": "tzero",
+          "description": "Path to the tzero CLI executable."
+        },
+        "tzero.autoInitOnOpen": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically initialize T-Zero context files when opening a new workspace."
+        }
+      }
+    }
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE",
+    "icon.png",
+    "package.json"
+  ]
+}
